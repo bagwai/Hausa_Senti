@@ -3,21 +3,21 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "95e35357",
+   "id": "16e3f69a",
    "metadata": {
     "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
     "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:14.058489Z",
-     "iopub.status.busy": "2024-07-10T11:03:14.058016Z",
-     "iopub.status.idle": "2024-07-10T11:03:15.195395Z",
-     "shell.execute_reply": "2024-07-10T11:03:15.194307Z"
+     "iopub.execute_input": "2024-07-11T07:48:38.328560Z",
+     "iopub.status.busy": "2024-07-11T07:48:38.328169Z",
+     "iopub.status.idle": "2024-07-11T07:48:39.215543Z",
+     "shell.execute_reply": "2024-07-11T07:48:39.214426Z"
     },
     "papermill": {
-     "duration": 1.147957,
-     "end_time": "2024-07-10T11:03:15.198289",
+     "duration": 0.896491,
+     "end_time": "2024-07-11T07:48:39.218216",
      "exception": false,
-     "start_time": "2024-07-10T11:03:14.050332",
+     "start_time": "2024-07-11T07:48:38.321725",
      "status": "completed"
     },
     "tags": []
@@ -55,36 +55,21 @@
    ]
   },
   {
-   "cell_type": "markdown",
-   "id": "de0313a7",
-   "metadata": {
-    "papermill": {
-     "duration": 0.005596,
-     "end_time": "2024-07-10T11:03:15.209913",
-     "exception": false,
-     "start_time": "2024-07-10T11:03:15.204317",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "source": []
-  },
-  {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "7f3d3847",
+   "id": "bc82f176",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:15.223203Z",
-     "iopub.status.busy": "2024-07-10T11:03:15.222636Z",
-     "iopub.status.idle": "2024-07-10T11:03:17.163594Z",
-     "shell.execute_reply": "2024-07-10T11:03:17.162550Z"
+     "iopub.execute_input": "2024-07-11T07:48:39.228681Z",
+     "iopub.status.busy": "2024-07-11T07:48:39.228190Z",
+     "iopub.status.idle": "2024-07-11T07:48:40.799525Z",
+     "shell.execute_reply": "2024-07-11T07:48:40.798463Z"
     },
     "papermill": {
-     "duration": 1.950916,
-     "end_time": "2024-07-10T11:03:17.166406",
+     "duration": 1.579322,
+     "end_time": "2024-07-11T07:48:40.802163",
      "exception": false,
-     "start_time": "2024-07-10T11:03:15.215490",
+     "start_time": "2024-07-11T07:48:39.222841",
      "status": "completed"
     },
     "tags": []
@@ -94,25 +79,26 @@
     "import pandas as pd\n",
     "from sklearn.feature_extraction.text import TfidfVectorizer\n",
     "from sklearn.ensemble import RandomForestClassifier\n",
-    "from sklearn.metrics import accuracy_score, classification_report"
+    "from sklearn.model_selection import GridSearchCV, train_test_split\n",
+    "from sklearn.metrics import classification_report, accuracy_score"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "7712a250",
+   "id": "99240e3f",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:17.179539Z",
-     "iopub.status.busy": "2024-07-10T11:03:17.179122Z",
-     "iopub.status.idle": "2024-07-10T11:03:17.350109Z",
-     "shell.execute_reply": "2024-07-10T11:03:17.348709Z"
+     "iopub.execute_input": "2024-07-11T07:48:40.811984Z",
+     "iopub.status.busy": "2024-07-11T07:48:40.811613Z",
+     "iopub.status.idle": "2024-07-11T07:48:40.953547Z",
+     "shell.execute_reply": "2024-07-11T07:48:40.952550Z"
     },
     "papermill": {
-     "duration": 0.180999,
-     "end_time": "2024-07-10T11:03:17.353145",
+     "duration": 0.149756,
+     "end_time": "2024-07-11T07:48:40.956109",
      "exception": false,
-     "start_time": "2024-07-10T11:03:17.172146",
+     "start_time": "2024-07-11T07:48:40.806353",
      "status": "completed"
     },
     "tags": []
@@ -127,19 +113,19 @@
   {
    "cell_type": "code",
    "execution_count": 4,
-   "id": "9779b476",
+   "id": "9f9a3062",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:17.366418Z",
-     "iopub.status.busy": "2024-07-10T11:03:17.366002Z",
-     "iopub.status.idle": "2024-07-10T11:03:17.388029Z",
-     "shell.execute_reply": "2024-07-10T11:03:17.386713Z"
+     "iopub.execute_input": "2024-07-11T07:48:40.966112Z",
+     "iopub.status.busy": "2024-07-11T07:48:40.965716Z",
+     "iopub.status.idle": "2024-07-11T07:48:40.984457Z",
+     "shell.execute_reply": "2024-07-11T07:48:40.983457Z"
     },
     "papermill": {
-     "duration": 0.032001,
-     "end_time": "2024-07-10T11:03:17.390801",
+     "duration": 0.026276,
+     "end_time": "2024-07-11T07:48:40.986697",
      "exception": false,
-     "start_time": "2024-07-10T11:03:17.358800",
+     "start_time": "2024-07-11T07:48:40.960421",
      "status": "completed"
     },
     "tags": []
@@ -221,19 +207,19 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "3b335e31",
+   "id": "7ea9ba56",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:17.404221Z",
-     "iopub.status.busy": "2024-07-10T11:03:17.403834Z",
-     "iopub.status.idle": "2024-07-10T11:03:17.415159Z",
-     "shell.execute_reply": "2024-07-10T11:03:17.413984Z"
+     "iopub.execute_input": "2024-07-11T07:48:40.996808Z",
+     "iopub.status.busy": "2024-07-11T07:48:40.996462Z",
+     "iopub.status.idle": "2024-07-11T07:48:41.006742Z",
+     "shell.execute_reply": "2024-07-11T07:48:41.005658Z"
     },
     "papermill": {
-     "duration": 0.020952,
-     "end_time": "2024-07-10T11:03:17.417539",
+     "duration": 0.018043,
+     "end_time": "2024-07-11T07:48:41.009130",
      "exception": false,
-     "start_time": "2024-07-10T11:03:17.396587",
+     "start_time": "2024-07-11T07:48:40.991087",
      "status": "completed"
     },
     "tags": []
@@ -315,19 +301,19 @@
   {
    "cell_type": "code",
    "execution_count": 6,
-   "id": "6c7f7fe9",
+   "id": "af8fe24c",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:17.431641Z",
-     "iopub.status.busy": "2024-07-10T11:03:17.430898Z",
-     "iopub.status.idle": "2024-07-10T11:03:17.440007Z",
-     "shell.execute_reply": "2024-07-10T11:03:17.438892Z"
+     "iopub.execute_input": "2024-07-11T07:48:41.020073Z",
+     "iopub.status.busy": "2024-07-11T07:48:41.019697Z",
+     "iopub.status.idle": "2024-07-11T07:48:41.028369Z",
+     "shell.execute_reply": "2024-07-11T07:48:41.027327Z"
     },
     "papermill": {
-     "duration": 0.018861,
-     "end_time": "2024-07-10T11:03:17.442454",
+     "duration": 0.016972,
+     "end_time": "2024-07-11T07:48:41.030891",
      "exception": false,
-     "start_time": "2024-07-10T11:03:17.423593",
+     "start_time": "2024-07-11T07:48:41.013919",
      "status": "completed"
     },
     "tags": []
@@ -362,19 +348,19 @@
   {
    "cell_type": "code",
    "execution_count": 7,
-   "id": "e495cb1d",
+   "id": "d51c2d1e",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:17.457452Z",
-     "iopub.status.busy": "2024-07-10T11:03:17.456412Z",
-     "iopub.status.idle": "2024-07-10T11:03:17.471168Z",
-     "shell.execute_reply": "2024-07-10T11:03:17.470082Z"
+     "iopub.execute_input": "2024-07-11T07:48:41.041820Z",
+     "iopub.status.busy": "2024-07-11T07:48:41.041470Z",
+     "iopub.status.idle": "2024-07-11T07:48:41.054727Z",
+     "shell.execute_reply": "2024-07-11T07:48:41.053497Z"
     },
     "papermill": {
-     "duration": 0.024999,
-     "end_time": "2024-07-10T11:03:17.473679",
+     "duration": 0.021543,
+     "end_time": "2024-07-11T07:48:41.057085",
      "exception": false,
-     "start_time": "2024-07-10T11:03:17.448680",
+     "start_time": "2024-07-11T07:48:41.035542",
      "status": "completed"
     },
     "tags": []
@@ -453,19 +439,19 @@
   {
    "cell_type": "code",
    "execution_count": 8,
-   "id": "139931a3",
+   "id": "567c8201",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:17.488406Z",
-     "iopub.status.busy": "2024-07-10T11:03:17.488000Z",
-     "iopub.status.idle": "2024-07-10T11:03:17.932991Z",
-     "shell.execute_reply": "2024-07-10T11:03:17.931649Z"
+     "iopub.execute_input": "2024-07-11T07:48:41.068460Z",
+     "iopub.status.busy": "2024-07-11T07:48:41.068011Z",
+     "iopub.status.idle": "2024-07-11T07:48:41.386194Z",
+     "shell.execute_reply": "2024-07-11T07:48:41.385226Z"
     },
     "papermill": {
-     "duration": 0.455974,
-     "end_time": "2024-07-10T11:03:17.936103",
+     "duration": 0.32713,
+     "end_time": "2024-07-11T07:48:41.389207",
      "exception": false,
-     "start_time": "2024-07-10T11:03:17.480129",
+     "start_time": "2024-07-11T07:48:41.062077",
      "status": "completed"
     },
     "tags": []
@@ -480,59 +466,144 @@
   {
    "cell_type": "code",
    "execution_count": 9,
-   "id": "f7333030",
+   "id": "6ea33fde",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:17.951971Z",
-     "iopub.status.busy": "2024-07-10T11:03:17.951558Z",
-     "iopub.status.idle": "2024-07-10T11:03:34.182793Z",
-     "shell.execute_reply": "2024-07-10T11:03:34.181648Z"
+     "iopub.execute_input": "2024-07-11T07:48:41.400673Z",
+     "iopub.status.busy": "2024-07-11T07:48:41.400275Z",
+     "iopub.status.idle": "2024-07-11T07:48:41.405818Z",
+     "shell.execute_reply": "2024-07-11T07:48:41.404680Z"
     },
     "papermill": {
-     "duration": 16.242125,
-     "end_time": "2024-07-10T11:03:34.185200",
+     "duration": 0.014004,
+     "end_time": "2024-07-11T07:48:41.408184",
      "exception": false,
-     "start_time": "2024-07-10T11:03:17.943075",
+     "start_time": "2024-07-11T07:48:41.394180",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "param_grid = {\n",
+    "    'n_estimators': [100, 200, 300],  # Number of trees in the forest\n",
+    "    'max_depth': [None, 10, 20, 30],  # Maximum number of levels in each tree\n",
+    "    'min_samples_split': [2, 5, 10]   # Minimum number of samples required to split an internal node\n",
+    "}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "f330aebf",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-07-11T07:48:41.419657Z",
+     "iopub.status.busy": "2024-07-11T07:48:41.419253Z",
+     "iopub.status.idle": "2024-07-11T07:55:34.974774Z",
+     "shell.execute_reply": "2024-07-11T07:55:34.973470Z"
+    },
+    "papermill": {
+     "duration": 413.568484,
+     "end_time": "2024-07-11T07:55:34.981733",
+     "exception": false,
+     "start_time": "2024-07-11T07:48:41.413249",
      "status": "completed"
     },
     "tags": []
    },
    "outputs": [
     {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Fitting 5 folds for each of 36 candidates, totalling 180 fits\n"
+     ]
+    },
+    {
      "data": {
       "text/html": [
-       "<style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: \"▸\";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: \"▾\";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: \"\";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: \"\";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: \"\";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id=\"sk-container-id-1\" class=\"sk-top-container\"><div class=\"sk-text-repr-fallback\"><pre>RandomForestClassifier(random_state=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class=\"sk-container\" hidden><div class=\"sk-item\"><div class=\"sk-estimator sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-1\" type=\"checkbox\" checked><label for=\"sk-estimator-id-1\" class=\"sk-toggleable__label sk-toggleable__label-arrow\">RandomForestClassifier</label><div class=\"sk-toggleable__content\"><pre>RandomForestClassifier(random_state=42)</pre></div></div></div></div></div>"
+       "<style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: \"▸\";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: \"▾\";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: \"\";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: \"\";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: \"\";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id=\"sk-container-id-1\" class=\"sk-top-container\"><div class=\"sk-text-repr-fallback\"><pre>GridSearchCV(cv=5, estimator=RandomForestClassifier(random_state=42), n_jobs=-1,\n",
+       "             param_grid={&#x27;max_depth&#x27;: [None, 10, 20, 30],\n",
+       "                         &#x27;min_samples_split&#x27;: [2, 5, 10],\n",
+       "                         &#x27;n_estimators&#x27;: [100, 200, 300]},\n",
+       "             verbose=2)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class=\"sk-container\" hidden><div class=\"sk-item sk-dashed-wrapped\"><div class=\"sk-label-container\"><div class=\"sk-label sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-1\" type=\"checkbox\" ><label for=\"sk-estimator-id-1\" class=\"sk-toggleable__label sk-toggleable__label-arrow\">GridSearchCV</label><div class=\"sk-toggleable__content\"><pre>GridSearchCV(cv=5, estimator=RandomForestClassifier(random_state=42), n_jobs=-1,\n",
+       "             param_grid={&#x27;max_depth&#x27;: [None, 10, 20, 30],\n",
+       "                         &#x27;min_samples_split&#x27;: [2, 5, 10],\n",
+       "                         &#x27;n_estimators&#x27;: [100, 200, 300]},\n",
+       "             verbose=2)</pre></div></div></div><div class=\"sk-parallel\"><div class=\"sk-parallel-item\"><div class=\"sk-item\"><div class=\"sk-label-container\"><div class=\"sk-label sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-2\" type=\"checkbox\" ><label for=\"sk-estimator-id-2\" class=\"sk-toggleable__label sk-toggleable__label-arrow\">estimator: RandomForestClassifier</label><div class=\"sk-toggleable__content\"><pre>RandomForestClassifier(random_state=42)</pre></div></div></div><div class=\"sk-serial\"><div class=\"sk-item\"><div class=\"sk-estimator sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-3\" type=\"checkbox\" ><label for=\"sk-estimator-id-3\" class=\"sk-toggleable__label sk-toggleable__label-arrow\">RandomForestClassifier</label><div class=\"sk-toggleable__content\"><pre>RandomForestClassifier(random_state=42)</pre></div></div></div></div></div></div></div></div></div></div>"
       ],
       "text/plain": [
-       "RandomForestClassifier(random_state=42)"
+       "GridSearchCV(cv=5, estimator=RandomForestClassifier(random_state=42), n_jobs=-1,\n",
+       "             param_grid={'max_depth': [None, 10, 20, 30],\n",
+       "                         'min_samples_split': [2, 5, 10],\n",
+       "                         'n_estimators': [100, 200, 300]},\n",
+       "             verbose=2)"
       ]
      },
-     "execution_count": 9,
+     "execution_count": 10,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "model = RandomForestClassifier(n_estimators=100, random_state=42)\n",
-    "model.fit(X_train, y_train)\n"
+    "rf = RandomForestClassifier(random_state=42)\n",
+    "grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=5, verbose=2, n_jobs=-1)\n",
+    "grid_search.fit(X_train, y_train)"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
-   "id": "1004c6a7",
+   "execution_count": 11,
+   "id": "05d36fb7",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:34.200569Z",
-     "iopub.status.busy": "2024-07-10T11:03:34.200113Z",
-     "iopub.status.idle": "2024-07-10T11:03:35.569529Z",
-     "shell.execute_reply": "2024-07-10T11:03:35.568337Z"
+     "iopub.execute_input": "2024-07-11T07:55:34.993792Z",
+     "iopub.status.busy": "2024-07-11T07:55:34.993408Z",
+     "iopub.status.idle": "2024-07-11T07:55:34.999917Z",
+     "shell.execute_reply": "2024-07-11T07:55:34.998518Z"
     },
     "papermill": {
-     "duration": 1.3807,
-     "end_time": "2024-07-10T11:03:35.572666",
+     "duration": 0.015371,
+     "end_time": "2024-07-11T07:55:35.002116",
      "exception": false,
-     "start_time": "2024-07-10T11:03:34.191966",
+     "start_time": "2024-07-11T07:55:34.986745",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Best parameters: {'max_depth': None, 'min_samples_split': 10, 'n_estimators': 200}\n",
+      "Best cross-validation score: 0.64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Best parameters and best score\n",
+    "print(\"Best parameters:\", grid_search.best_params_)\n",
+    "print(\"Best cross-validation score: {:.2f}\".format(grid_search.best_score_))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "f1169468",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2024-07-11T07:55:35.013968Z",
+     "iopub.status.busy": "2024-07-11T07:55:35.013575Z",
+     "iopub.status.idle": "2024-07-11T07:55:35.260126Z",
+     "shell.execute_reply": "2024-07-11T07:55:35.259001Z"
+    },
+    "papermill": {
+     "duration": 0.255446,
+     "end_time": "2024-07-11T07:55:35.262685",
+     "exception": false,
+     "start_time": "2024-07-11T07:55:35.007239",
      "status": "completed"
     },
     "tags": []
@@ -540,26 +611,25 @@
    "outputs": [],
    "source": [
     "X_test = vectorizer.transform(test_data['tweet'])\n",
-    "y_test = test_data['label']\n",
-    "predictions = model.predict(X_test)"
+    "y_test = test_data['label']"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
-   "id": "3e10456d",
+   "execution_count": 13,
+   "id": "0dd319d2",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:35.588361Z",
-     "iopub.status.busy": "2024-07-10T11:03:35.587939Z",
-     "iopub.status.idle": "2024-07-10T11:03:36.380495Z",
-     "shell.execute_reply": "2024-07-10T11:03:36.379131Z"
+     "iopub.execute_input": "2024-07-11T07:55:35.276042Z",
+     "iopub.status.busy": "2024-07-11T07:55:35.275661Z",
+     "iopub.status.idle": "2024-07-11T07:55:37.616924Z",
+     "shell.execute_reply": "2024-07-11T07:55:37.615822Z"
     },
     "papermill": {
-     "duration": 0.803434,
-     "end_time": "2024-07-10T11:03:36.383303",
+     "duration": 2.352014,
+     "end_time": "2024-07-11T07:55:37.619975",
      "exception": false,
-     "start_time": "2024-07-10T11:03:35.579869",
+     "start_time": "2024-07-11T07:55:35.267961",
      "status": "completed"
     },
     "tags": []
@@ -569,58 +639,41 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Accuracy: 0.9628139994355066\n",
       "              precision    recall  f1-score   support\n",
       "\n",
-      "    negative       0.98      0.95      0.97      4573\n",
-      "     neutral       0.93      0.98      0.95      4912\n",
-      "    positive       0.98      0.96      0.97      4687\n",
+      "    negative       0.97      0.94      0.95      4573\n",
+      "     neutral       0.91      0.97      0.94      4912\n",
+      "    positive       0.97      0.94      0.96      4687\n",
       "\n",
-      "    accuracy                           0.96     14172\n",
-      "   macro avg       0.96      0.96      0.96     14172\n",
-      "weighted avg       0.96      0.96      0.96     14172\n",
+      "    accuracy                           0.95     14172\n",
+      "   macro avg       0.95      0.95      0.95     14172\n",
+      "weighted avg       0.95      0.95      0.95     14172\n",
       "\n"
      ]
     }
    ],
    "source": [
-    "print(\"Accuracy:\", accuracy_score(y_test, predictions))\n",
+    "best_model = grid_search.best_estimator_\n",
+    "predictions = best_model.predict(X_test)\n",
     "print(classification_report(y_test, predictions))"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
-   "id": "b3888234",
-   "metadata": {
-    "papermill": {
-     "duration": 0.00667,
-     "end_time": "2024-07-10T11:03:36.396980",
-     "exception": false,
-     "start_time": "2024-07-10T11:03:36.390310",
-     "status": "completed"
-    },
-    "tags": []
-   },
-   "outputs": [],
-   "source": []
-  },
-  {
-   "cell_type": "code",
-   "execution_count": 12,
-   "id": "5e19f484",
+   "execution_count": 14,
+   "id": "b0fe007f",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-07-10T11:03:36.413253Z",
-     "iopub.status.busy": "2024-07-10T11:03:36.412356Z",
-     "iopub.status.idle": "2024-07-10T11:03:37.205742Z",
-     "shell.execute_reply": "2024-07-10T11:03:37.204365Z"
+     "iopub.execute_input": "2024-07-11T07:55:37.632945Z",
+     "iopub.status.busy": "2024-07-11T07:55:37.632598Z",
+     "iopub.status.idle": "2024-07-11T07:55:37.653267Z",
+     "shell.execute_reply": "2024-07-11T07:55:37.652093Z"
     },
     "papermill": {
-     "duration": 0.804484,
-     "end_time": "2024-07-10T11:03:37.208369",
+     "duration": 0.029556,
+     "end_time": "2024-07-11T07:55:37.655485",
      "exception": false,
-     "start_time": "2024-07-10T11:03:36.403885",
+     "start_time": "2024-07-11T07:55:37.625929",
      "status": "completed"
     },
     "tags": []
@@ -630,23 +683,12 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Accuracy: 0.9628139994355066\n",
-      "              precision    recall  f1-score   support\n",
-      "\n",
-      "    negative       0.98      0.95      0.97      4573\n",
-      "     neutral       0.93      0.98      0.95      4912\n",
-      "    positive       0.98      0.96      0.97      4687\n",
-      "\n",
-      "    accuracy                           0.96     14172\n",
-      "   macro avg       0.96      0.96      0.96     14172\n",
-      "weighted avg       0.96      0.96      0.96     14172\n",
-      "\n"
+      "Accuracy: 0.9506773920406435\n"
      ]
     }
    ],
    "source": [
-    "print(\"Accuracy:\", accuracy_score(y_test, predictions))\n",
-    "print(classification_report(y_test, predictions))"
+    "print(\"Accuracy:\", accuracy_score(y_test, predictions))\n"
    ]
   }
  ],
@@ -685,14 +727,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 27.254966,
-   "end_time": "2024-07-10T11:03:37.938162",
+   "duration": 424.647221,
+   "end_time": "2024-07-11T07:55:40.282475",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2024-07-10T11:03:10.683196",
+   "start_time": "2024-07-11T07:48:35.635254",
    "version": "2.5.0"
   }
  },
